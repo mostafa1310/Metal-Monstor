@@ -196,7 +196,7 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
   <ul>
    <li>2 × GA25 170 rpm, one each side, <b>55 mm from the hinge at 112°</b> (behind the blade when it is up). They fit inside the box width – no cutting of the side panels.</li>
    <li>Printed <b>L-bracket</b>: <b>5 mm</b> face plate (Ø8 hole for the Ø7 shaft boss; 6 mm of the 11.5 mm shaft reaches the coupler sleeve) + foot + gusset. GA25 face → plate with 2 × M3 countersunk. Foot → extension plate + kit base with 2 × M3 + nut.</li>
-   <li>Output: your <b>18 mm brass hex coupler</b> on the D-shaft (2 set screws + Loctite). The crank has a 12 mm hex socket, slides on the coupler hex and is held by an M4 screw + washer in the coupler's end thread.</li>
+   <li>Output: your <b>18 mm brass hex coupler</b> on the D-shaft (2 set screws + Loctite). The crank has a 12 mm hex socket, slides on the coupler hex and is held by an <b>M4×12 countersunk screw</b> in the coupler's end thread (the head sits in a countersink in the crank's end wall and clamps it onto the coupler).</li>
   </ul>
   <h3>Crank + rod</h3>
   
@@ -205,14 +205,14 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
   The lift uses 240° of the crank ⇒ ≈0.23 s at 170 rpm (no load). The linkage multiplies the motor torque by ≥ 1.6× ⇒ blade stall torque ≥ 4.9 N·m (estimate, design with half: ≈2.4 N·m) – enough to lift the front of a 3 kg robot.</p>
   <table>
    <tr><th>Part</th><th>Size / how it is attached</th><th>Material</th></tr>
-   <tr><td>Crank arm (2)</td><td>37.5 mm between holes, Ø22 boss, 10 mm thick: 12 mm hex socket 7 mm deep + Ø9.5 × 3 mm counterbore so the M4 button-head screw into the coupler's end thread sits flush (the rod passes over it near the top of the stroke)</td><td>PETG / PA 100 %</td></tr>
+   <tr><td>Crank arm (2)</td><td>37.5 mm between holes, Ø22 boss, 10 mm thick: 12 mm hex socket 7 mm deep + 3 mm end wall with a 90° countersink (Ø9 → Ø4.4) so the M4 countersunk screw into the coupler's end thread clamps the crank and sits flush (the rod passes over it near the top of the stroke). An M4 button head also works: it rests on the cone, still below the face.</td><td>PETG / PA 100 %</td></tr>
    <tr><td>Crank pin (2)</td><td>Plain M3×20 bolt (no shoulder bolts needed): head outside the crank, nyloc inside the rod, <b>tightened hard</b>. It clamps the inner ring of the rod's 623ZZ bearing against a 1 mm Ø5.5 boss printed on the crank, so the bearing turns, not the bolt thread.</td><td>steel</td></tr>
    <tr><td>Rod (2)</td><td>55 mm between centres, 9 mm body, Ø14 ends, 4 mm thick; a <b>623ZZ bearing (3×10×4)</b> pressed into each end (Ø10 seat, test-fit)</td><td>PETG 100 %</td></tr>
    <tr><td>Rib + lug (2)</td><td>5 mm printed fin on the blade, x = 1–6 mm each side of centre, with its own knuckle on the axle; lug hole 3.2 mm</td><td>PETG, printed with the blade or glued + 2 × M3</td></tr>
    <tr><td>Lug pin (1)</td><td>one plain M3×30 bolt through left rod bearing, both ribs and right rod bearing, nyloc tightened hard (both lugs are at the same place). 0.5 mm Ø5.5 bosses on the ribs touch only the bearing inner rings.</td><td>steel</td></tr>
   </table>
   <h3>Stack along the axle (right side, mirror for left)</h3>
-  <p><code>rib 1–6 mm</code> → <code>rod 6.5–10.5</code> → <code>crank 11.5–21.5 (M4 head recessed)</code> → <code>coupler sleeve 21.5–32.5</code> → <code>bracket plate 33–36.5</code> → <code>GA25</code></p>
+  <p><code>rib 1–6 mm</code> → <code>rod 6.5–10.5</code> → <code>crank 11.5–21.5 (M4 countersunk head flush)</code> → <code>coupler sleeve 21.5–32.5</code> → <code>bracket plate 33–36.5</code> → <code>GA25</code></p>
   <h3>Control</h3>
   <ul><li>Hall sensor on the bracket + magnet on the crank = "home". Flip button: run until the magnet comes back (one turn). No reversing.</li>
   <li><b>Wire the two motors with opposite polarity</b> – they face opposite directions. Test with the rods off: both cranks must turn the same way (seen from the side).</li>
@@ -303,8 +303,8 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
 <tr><td>M3×16 + nut</td><td>4</td><td>extension plate → kit base</td></tr>
 <tr><td>M3×20/25 + nut</td><td>4</td><td>bracket feet</td></tr>
 <tr><td>M3×8 countersunk</td><td>4</td><td>GA25 face → bracket</td></tr>
-<tr><td>18 mm brass hex coupler (your part)</td><td>2</td><td>2 set screws on the shaft + Loctite, M4 screw holds the crank</td></tr>
-<tr><td>Crank arms</td><td>2</td><td>10 mm print, 12 mm hex socket + M4 counterbore, 37.5 mm centres</td></tr>
+<tr><td>18 mm brass hex coupler (your part)</td><td>2</td><td>2 set screws on the shaft + Loctite, M4×12 countersunk screw holds the crank</td></tr>
+<tr><td>Crank arms</td><td>2</td><td>10 mm print, 12 mm hex socket + M4 countersink, 37.5 mm centres</td></tr>
 <tr><td>Rods</td><td>2</td><td>55 mm centres, print / 3 mm alu</td></tr>
 <tr><td>M3×20 + nyloc</td><td>2</td><td>crank pins (plain bolts – they clamp the bearings)</td></tr>
 <tr><td>623ZZ bearing 3×10×4</td><td>4 (+2 spare)</td><td>2 in each rod (3D-printer idler bearing)</td></tr>
