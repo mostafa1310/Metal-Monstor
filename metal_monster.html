@@ -31,6 +31,28 @@ aside{background:var(--panel);border-left:1px solid var(--line);display:flex;fle
 #tabs button.on{background:#1d2430;color:var(--txt);border-color:var(--line)}
 #pages{overflow:auto;padding:16px 18px 40px}
 .pg{display:none}.pg.on{display:block}
+.hdctl{display:flex;flex-direction:column;gap:8px;margin:8px 0}.hdctl button.on{background:var(--acc);color:#1a0d00;border-color:var(--acc)}
+.hdcmp tr[data-id]{cursor:pointer}.hdcmp tr[data-id]:hover td{background:#ffffff0a}.hdcmp tr.sel td{background:#ff8a1a22}
+.warn{color:#ffd666}
+.dw{display:block;width:100%;height:auto;background:#0e1116;border:1px solid var(--line);border-radius:8px;margin:8px 0}
+.dw *{vector-effect:non-scaling-stroke}
+.dw .pt{fill:#d0a46833;stroke:#d0a468;stroke-width:1.3px}.dw .pt2{fill:#a87a3e33;stroke:#c9925a;stroke-width:1.3px}
+.dw .pr{fill:#ff7a1a2a;stroke:#ff8a3a;stroke-width:1.3px}.dw .mt{fill:#9aa1ab33;stroke:#aeb6c2;stroke-width:1.2px}
+.dw .brs{fill:#c9a44a33;stroke:#c9a44a;stroke-width:1.2px}.dw .mo{fill:#1b1e2399;stroke:#6b7480;stroke-width:1.2px}
+.dw .lid{fill:#b3261e55;stroke:#d24a40;stroke-width:1.2px}.dw .tpu{fill:#3a3f46;stroke:#6b7480;stroke-width:1px}
+.dw .ch{fill:#7a808a33;stroke:#7a808a;stroke-width:1px;stroke-dasharray:3 2}
+.dw .ho{fill:#0e1116;stroke:#e0b878;stroke-width:1.2px}.dw .hd{fill:none;stroke:#e0b878;stroke-width:1px;stroke-dasharray:4 3}
+.dw .bl{stroke:#9aa1ab;stroke-width:2px}.dw .blc{fill:none;stroke:#9aa1ab;stroke-width:1.2px;stroke-dasharray:2 2}
+.dw .cl{fill:none;stroke:#5b6575;stroke-width:1px;stroke-dasharray:8 3 2 3}.dw .brk{stroke:#c9925a;stroke-width:1.3px}
+.dw .dm{stroke:#ffd23f;stroke-width:1px}.dw .ex{stroke:#ffd23f88;stroke-width:.8px}.dw .ld{stroke:#c7cfda99;stroke-width:.8px}
+.dw text{font-family:system-ui,Segoe UI,Roboto,sans-serif}.dw .dt{fill:#ffd23f}.dw .lt{fill:#c7cfda}
+.dw .nb{fill:#ff8a1a;stroke:none}.dw .nt{fill:#1a0d00;font-weight:700}
+.dws{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}.dws .dw{flex:1 1 220px}
+.hpbar{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;position:sticky;top:0;z-index:2;background:var(--panel);padding:6px 0}.hpbar button.on{background:var(--acc);color:#1a0d00;border-color:var(--acc)}
+.pickrow.hprow{padding:6px 10px;margin:4px 0}.hprow .psz{margin-left:auto;color:var(--mut);font-size:12px}
+.hptag{border:1px solid;border-radius:10px;padding:0 7px;font-size:11px;margin-left:auto}
+.hpdet{border:1px solid #ff8a1a;border-radius:8px;padding:8px 10px;margin:10px 0;background:#ff8a1a0d}
+.hpath{background:#0e1116;border:1px solid var(--line);border-radius:8px;padding:8px 10px;line-height:1.8}
 h2{font-size:17px;margin:0 0 4px} h3{font-size:14px;margin:18px 0 6px;color:var(--acc)}
 p{margin:6px 0;color:#c7cfda} ul{margin:6px 0;padding-left:18px;color:#c7cfda} li{margin:3px 0}
 table{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
@@ -164,7 +186,7 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
 
   <aside>
     <div id="tabs">
-      <button data-pg="p0" class="on">Overview</button><button data-pg="p1">Shovel</button><button data-pg="p2">Hammer</button>
+      <button data-pg="p0" class="on">Overview</button><button data-pg="p1">Shovel</button><button data-pg="p2">Hammer</button><button data-pg="p8">Hammer drive</button><button data-pg="p9">Hammer parts</button>
       <button data-pg="p3">Drive &amp; frame</button><button data-pg="p6">Check</button><button data-pg="p7">Print parts</button><button data-pg="p4">Hardware</button><button data-pg="p5">30 days</button>
     </div>
     <div id="pages">
@@ -174,10 +196,10 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
   <p>Kit box 179 × 220 × 75 mm (15 mm panels, Ø86 × 39 wheels outside, 263 mm over the tyres) with a <b>crank-and-rod shovel (no gears, one motor turn = one flip)</b> at the front and an <b>overhead hammer</b> that hits front or back. Every motor is a GA25-370 12 V: 4 × 133 rpm drive (20 kg·cm), 2 × 170 rpm shovel, 1 × 170 rpm hammer (≈15.6 kg·cm, estimated).</p>
   <p>Numbers in the 3D view: 1 blade · 2 axle · 3 crank + rod · 4 shovel motors · 5 coupling · 6 cheeks · 7–13 hammer · 14 drive. Use <b>Zoom</b> buttons + <b>X-ray</b> to see the motor mounts, couplings, bolts, gears and chain; <b>Explode</b> pulls the assemblies apart.</p>
   <table>
-   <tr><th>Size at start</th><td>53.6 cm long (blade tip → hammer head) · 26.5 cm wide (tyres) · 21 cm high (48T sprocket) – turn on <b>Size</b> to see them on the model</td></tr>
+   <tr><th>Size at start</th><td>53.6 cm long (blade tip → hammer head) · 26.5 cm wide (tyres) · ≈21 cm high – turn on <b>Size</b> to see them on the model</td></tr>
    <tr><th>Limit</th><td>55 × 55 × 30 <span class="ok">✔</span></td></tr>
    <tr><th>Shovel</th><td>blade lifts 90° per motor turn</td></tr>
-   <tr><th>Hammer</th><td>GA25 → #25 chain 4:1 → dog clutch → hammer; rubber bands give the speed. Stops at 70° and 284°.</td></tr>
+   <tr><th>Hammer</th><td>Wooden stick + small double-faced head, mounted <b>directly on the GA25's hex coupler</b> (motor axis = pivot), driven both ways. Chain / gear versions stay as options in the <b>Hammer drive</b> tab. Stops at 70° and 284°.</td></tr>
   </table>
   <div class="note">Open the <b>Check</b> tab for everything the mechanical review found, and press <b>Run clash check</b> to sweep every moving part in this model yourself.</div>
 </div>
@@ -220,26 +242,46 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
 </div>
 
 <div class="pg" id="p2">
-  <h2>Overhead hammer</h2>
+  <h2>Overhead hammer (simple stick)</h2>
+  <p><b>One wooden stick with a small head that sticks out front and back</b> – it hits a robot in front <i>or</i> behind. The hub sits <b>straight on the motor's brass hex coupler</b>, like the shovel crank – the motor shaft is the pivot (no shaft, bearings, chain or gears). Light on purpose: less mass = the motor swings it faster. The chain / gear versions are still in the <b>Hammer drive</b> tab if you ever want them; the 3D model follows that choice.</p>
   <table>
-   <tr><td>Pivot</td><td>Ø10 steel shaft, 15 cm high, 1.5 cm behind centre, in 2 × 6000-2RS bearings pressed into 9 mm ply uprights (printed retainer rings, 3 × M2.5).</td></tr>
-   <tr><td>Uprights</td><td>9 mm ply, 29 mm each side of centre, each held by 2 + 2 aluminium angles (20×20×2), M4 through the lid and a 4 mm ply doubler underneath.</td></tr>
-   <tr><td>Arm</td><td>2 × 9 mm ply, 22 cm to head centre, printed hub clamped to the shaft + <b>M4 cross bolt through the shaft</b>, 3 × M4 through-bolts, 2 printed spacers.</td></tr>
-   <tr><td>Head</td><td>13 × 8 × 7 cm PETG 60 %, ply cheeks top/bottom, 2 × M4 vertical through-bolts, 5 mm TPU pads on both faces. Arm plates go 15 mm into slots in the head, 2 × M4.</td></tr>
-   <tr><td>Drive</td><td>GA25 170 rpm → 18 mm brass hex coupler → <b>printed 12T #25 sprocket with hex hub</b> (M4 screw) → 56-link chain → <b>48T sprocket</b> (4:1, 42 rpm and up to ≈6 N·m at the shaft, estimate).</td></tr>
-   <tr><td>Dog clutch</td><td>48T sprocket turns free on a 10×14 bronze bush and carries a Ø5 dog pin. A Ø36 disc clamped to the shaft carries the other Ø5 pin. They touch at 22°. The motor can only <b>push</b>; the hammer is free to run ahead.</td></tr>
-   <tr><td>Energy</td><td>Band crank (32 mm) on the left end of the shaft, 2–4 bands to an anchor post on the lid. Longest at the top (over-centre) ⇒ they throw the hammer down on either side. ≈1.5–2 J at the head.</td></tr>
-   <tr><td>Stops</td><td>Rear 70° and front 284°: printed posts with TPU pads, catching the arm ≈9 cm from the pivot.</td></tr>
+   <tr><th>Part</th><th>Size / how it is attached</th><th>Material</th></tr>
+   <tr><td>Pivot</td><td>The GA25 output shaft itself, 58 mm above the lid, 15 mm behind the centre. The head is near the hammer's centre of percussion, so only ≈ 15–20 % of a hit pushes back on the motor shaft.</td><td>–</td></tr>
+   <tr><td>Motor upright (1)</td><td>12 mm ply, 80 × 78, inner face 26.5 mm right of the centre. <b>Ø26 pocket 9 mm deep</b> for the gearbox (3 mm web), Ø8 for the nose, 2 × M3×8 countersunk into the GA25. 2 alu angles on the motor side (M4 through lid + doubler) + 2 × M4×30 wood screws from under the lid.</td><td>plywood</td></tr>
+   <tr><td>Hub (1)</td><td>30 × 30 × 55 print: <b>12 mm hex socket 7 deep</b> on the coupler + M4×16 from a Ø8 counterbore into the coupler thread. The stick goes 30 mm into a 20 × 15 slot from below, 2 × M4 through-bolts.</td><td>PETG / PA 100 %</td></tr>
+   <tr><td>Stick (1)</td><td><b>20 × 15 mm hardwood</b> (beech / oak), 225 mm long: 22 cm from the pivot to the head centre. ≈ 47 g. The 20 mm side faces the swing direction.</td><td>wood</td></tr>
+   <tr><td>Head (1)</td><td><b>30 × 25 × 64 mm hardwood block</b>, the stick goes through a 20 × 15 hole and ends flush, 1 × M4 through-bolt. Sticks out 22 mm in front of and behind the stick. 3 mm rubber / TPU pad on both ends ⇒ 70 mm over the pads. ≈ 35 g.</td><td>wood + rubber</td></tr>
+   <tr><td>Stops</td><td>Rear 70° and front 284°: wood or printed posts with rubber / TPU pads, catching the stick ≈ 8 cm from the pivot. Without the front stop the head would touch the shovel rods at 294°.</td><td>wood / PETG + rubber</td></tr>
   </table>
-  <h3>One front hit, step by step</h3>
+  <h3>One hit, step by step</h3>
   <ol style="color:#c7cfda;padding-left:18px">
-   <li>Rest at 70° on the rear stop, bands pull it down onto the stop. Dog pin touching the disc pin.</li>
-   <li>Motor forward ≈ 0.5 s no load, ≈1–1.5 s with the bands: dog pushes the hammer to just past the top (≈186°), bands stretched.</li>
-   <li>Motor stops. Bands + gravity throw the hammer forward; it leaves the dog behind. Hit at ≈275° (or front stop at 284°).</li>
-   <li>Re-arm: motor reverses ≈220° until the dog touches the other side of the pin, pushes the hammer back over the top, it drops onto the rear stop. Motor goes forward ≈210° to be ready again.</li>
+   <li><b>Front</b>: hammer rests on the rear stop. Full power forward: it goes over the top and down onto the robot in front. Brake, then half power back to the rear stop.</li>
+   <li><b>Rear</b>: half power forward to the front stop, then full power backwards over the top onto the robot behind. Then back to the rear stop.</li>
   </ol>
-  <p>For a rear hit: same, but first put the hammer on the front stop, then push it back over the top.</p>
-  <div class="note">Hall sensor on the right upright + magnet on the disc = "hammer at rest". Motor current limit ≈ 3 A; never let the motor push the hammer against a stop.</div>
+  <div class="note">The motor is always connected to the hammer now: it must <b>never push against a stop</b>. Hall sensor on the upright + magnet on the hub = "home". Current limit ≈ 3 A, cut power if stalled more than ≈ 1 s. Brake (short the motor) before a stop instead of coasting into it.</div>
+</div>
+
+<div class="pg" id="p8">
+  <h2>Hammer drive – direct, chain or gears</h2>
+  <p><b>Direct on motor</b> is the chosen design: fewest parts, and the fastest hit. Chain and gears stay here to compare. Pick one below – the <b>3D model is rebuilt with it</b> (sprocket / gear sizes, chain length, motor position, bracket) and the numbers update. <b>▶ Hit front / Hit rear</b> play the swing at the speed the motor really gives with that pair. Click any row of the compare table to try it.</p>
+  <div id="hdUI"></div>
+  <h3>Why a low ratio for this hammer</h3>
+  <p>The stick hammer weighs only ≈ 80 g, so the motor has torque to spare even at 1 : 1. A bigger ratio only makes it slower – the hit energy grows with speed², so <b>1 : 1 hits hardest</b> – and 1 : 1 needs no chain or gears at all: the hammer goes straight on the motor. Use 2 : 1 or more only if you make the head heavier (try the head-mass box).</p>
+  <h3>How to check what you have</h3>
+  <ul>
+   <li><b>Chain pitch</b> = pin to pin: 6.35 mm = #25 / 04C · 8 mm = 05B · 9.525 mm = #35 / 06B · 12.7 mm = #40 / 08B / bicycle. Measure 10 pitches and divide by 10.</li>
+   <li><b>Sprocket</b>: count the teeth, measure the outside Ø and compare with the table. The tooth width must fit inside the chain (≈ 2.8 mm for #25).</li>
+   <li><b>Gear</b>: module = outside Ø ÷ (teeth + 2). Both gears must have the same module. Printed gears here are module 2.</li>
+   <li>Different pitch or a pair not in the list? Send the pitch + tooth counts and it gets added.</li>
+  </ul>
+  <h3>Stack along the shaft (right side, from centre)</h3>
+  <p><code>hub ±15 mm</code> → <code>collar 15–24</code> → <code>upright 24.5–33.5</code> → <code>bearing retainer 33.5–36</code> → <code>drive hub 37–44.5 (M4 cross bolt)</code> → <code>sprocket 44.5–47.3</code> or <code>gear 44.5–56.5</code></p>
+</div>
+
+<div class="pg" id="p9">
+  <h2>Hammer – every part in detail</h2>
+  <p>All sizes in mm, taken from the 3D model, for the drive you picked in the <b>Hammer drive</b> tab (now: <span id="hpDrive"></span>). Change the drive there and this page redraws. <b>Click a part</b> in the list: the 3D view shows it <b>alone</b>, turned towards you, with its measurements (yellow). <b>+ Attaches to</b> adds the parts and bolts it connects to (blue); <b>In the robot</b> shows where it sits. The drawing and how it attaches open under the part you clicked.</p>
+  <div id="hpUI"></div>
 </div>
 
 <div class="pg" id="p3">
@@ -266,15 +308,16 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
 <div class="pg" id="p6">
   <h2>Mechanical check</h2>
   <p>Problems found in the earlier model and how this version solves them, then things to verify on the real parts.</p>
+  <div class="note"><b>Hammer redesigned (direct drive, wooden stick).</b> The cards below about rubber bands, the dog clutch and the 48T sprocket are about the old hammer and no longer apply. New: every chain and gear option in the Hammer drive tab was swept with the clash check – 0 clashes; the chain length solver keeps the motor sprocket above the lid. Without the front stop the head would touch the shovel rods at 294° (stop at 284°).</div>
   <div class='iss'><div><span class='sev s-crit'>CRIT</span> <span class='st'>✔ fixed in model</span></div><b>Hammer catapult back-drove the GA25</b><div class=why>After the top, the bands must spin the hammer faster than the motor. Through a 4:1 chain and a ~1:34 gearbox the GA25 would be dragged at >15 000 rpm: it acts as a brake and the gearbox teeth take the shock.</div><div>→ Dog clutch: the 48T sprocket turns free on a bronze bush and only <i>pushes</i> a pin on a disc keyed to the shaft. Past the top the hammer runs away from the pin. To re-arm, the motor turns the other way around (≈220°) and pushes from the other side.</div></div><div class='iss'><div><span class='sev s-crit'>CRIT</span> <span class='st'>✔ fixed in model</span></div><b>GA25 shaft (11.5 mm) barely longer than the 15 mm side panel</b><div class=why>Mounted on the inside face, the shaft cannot reach the wheel.</div><div>→ Ø26 mm pocket, 11 mm deep, from the inside of each side panel (4 mm web left). Motor face bolts to the web with 2 × M3 countersunk. Pocket 12 mm deep (3 mm web): the shaft sticks out 8.5 mm, the coupler sleeve grips 8 mm of it (set screws on the D-flat) and its hex goes into the wheel. Gap between the two motors: 10 cm (room for battery + electronics).</div></div><div class='iss'><div><span class='sev s-high'>HIGH</span> <span class='st'>✔ fixed in model</span></div><b>New kit size: 179 × 220 box, Ø86 × 39 wheels, 263 mm over the tyres</b><div class=why>The wheels sit 3 mm off the panels with the coupler recessed in the hub. A blade narrower than the tyres would have its side walls swing back <i>into the front wheels</i> when it lifts, and the narrower box puts the shovel motors through the side panels.</div><div>→ Blade 260 mm (printer bed) with <b>no side walls</b>, so nothing swings into the wheels; axle 260 mm, collars inside the blade ends. U-notch in the front top of each side panel for the shovel motor.</div></div><div class='iss'><div><span class='sev s-med'>MED</span> <span class='st'>✔ fixed in model</span></div><b>Kit front panel</b><div class=why>The cheeks, axle and shovel motors sit where the 188 mm front panel would be.</div><div>→ Leave the front panel off (keep it as a spare / for the extension plate).</div></div><div class='iss'><div><span class='sev s-crit'>CRIT</span> <span class='st'>✔ fixed in model</span></div><b>Old V2 crank rotated in the same plane as the blade ribs and the lug tab hit the motor plate</b><div class=why>With the hex coupler, the M4 screw head holding the crank was also hit by the rod near the top of the stroke (found by the clash check).</div><div>→ New linkage solved numerically: rib / rod / crank in separate planes (see Shovel tab), crank 37.5 mm, rod 55 mm, lug 60 mm. A 40 mm crank was tried first – the clash check showed it hitting the lid and the front-left drive motor. Crank now 10 mm with the M4 head recessed, rod + ribs 3 mm further in, one lug pin for both sides. No clashes over the full turn now.</div></div><div class='iss'><div><span class='sev s-high'>HIGH</span> <span class='st'>✔ fixed in model</span></div><b>V2 notes said "wire both motors to the same output, same direction"</b><div class=why>Mirrored motors must turn opposite electrically.</div><div>→ Wire with opposite polarity.</div></div><div class='iss'><div><span class='sev s-crit'>CRIT</span> <span class='st'>✔ fixed in model</span></div><b>Raised blade swept through the shovel motors (first geared design)</b><div class=why>The motors were in front of the hinge; at 90° the blade plate passed through them.</div><div>→ Motors moved behind the blade plane: 55 mm from the hinge at 112° (behind/above). </div></div><div class='iss'><div><span class='sev s-high'>HIGH</span> <span class='st'>✔ fixed in model</span></div><b>Hinge: 608 bearings (Ø22) at 15 mm would scrape the floor; axle went through the extension plate</b><div>→ Hinge raised to 20 mm. <b>Dead axle</b>: Ø8 steel rod clamped in the cheek plates with collars; printed blade knuckles turn on it (grease). No bearings needed at this speed.</div></div><div class='iss'><div><span class='sev s-high'>HIGH</span> <span class='st'>✔ fixed in model</span></div><b>Hammer sprockets 0.3 mm apart, chain wrap on the 12T only 112°</b><div>→ Motor moved: centre distance 73 mm, wrap 120°, <b>56 links exactly</b>. Slotted bracket holes to tension the chain.</div></div><div class='iss'><div><span class='sev s-high'>HIGH</span> <span class='st'>✔ fixed in model</span></div><b>Hammer motor plate cut into the 48T sprocket; drive disc hit the bearing retainer</b><div class=why>Found by the clash check.</div><div>→ Plates and disc moved 3 mm out.</div></div><div class='iss'><div><span class='sev s-high'>HIGH</span> <span class='st'>✔ fixed in model</span></div><b>No hard stops for the hammer</b><div class=why>When the hammer misses, all its energy goes into whatever it hits (the lid, the shovel motors).</div><div>→ Two printed posts with TPU pads on the lid: rear stop at 70°, front stop at 284°. Through-bolted into a 4 mm plywood doubler under the lid.</div></div><div class='iss'><div><span class='sev s-high'>HIGH</span> <span class='st'>✔ fixed in model</span></div><b>Hammer vs shovel parts at the front</b><div class=why>At the bottom of a front swing the head comes down right above the shovel mechanism.</div><div>→ Clash sweep: the head first touches <b>the crank / rod at 291°</b>. Front stop set to 284°. Opponent tops ≥ 4.9 cm high are hit before the stop.</div></div><div class='iss'><div><span class='sev s-med'>MED</span> <span class='st'>✔ fixed in model</span></div><b>Shovel ↔ hammer interlock</b><div class=why>Shovel above 40° + hammer in the front zone (&gt;220°) collide.</div><div>→ Software interlock (the sliders show it). Add the same rule in your code.</div></div><div class='iss'><div><span class='sev s-med'>MED</span> <span class='st todo'>⚠ check when building</span></div><b>Measure your GA25 before printing</b><div class=why>Face screw spacing (≈17 mm, 2 × M3), shaft length (9–12 mm), D-flat.</div><div>→ Change bracket holes if different. Loctite 243 on every set screw on a D-shaft.</div></div><div class='iss'><div><span class='sev s-med'>MED</span> <span class='st todo'>⚠ check when building</span></div><b>Coupler on the Ø4 shaft</b><div class=why>Your method: 2 set screws lock the shaft, an M4 screw in the front thread holds the gear / crank / sprocket on the 12 mm hex – this is what the model shows.</div><div>→ If the coupler bore is 6 mm on the 4 mm shaft, the set screws push the shaft to one side (up to 1 mm off-centre) and the gear wobbles. A 4→6 mm brass sleeve (or a 4 mm bore coupler) keeps it centred. Loctite 243 on the set screws, one on the D-flat.</div></div><div class='iss'><div><span class='sev s-high'>HIGH</span> <span class='st todo'>⚠ check when building</span></div><b>The motors are stronger than first assumed</b><div class=why>Drive listing: 20 kg·cm at 133 rpm ⇒ the 170 rpm weapon motors ≈15.6 kg·cm (1.53 N·m) – about 3× my first estimate. Good for flipping, but the printed parts see more load: printed 12T sprocket ≈125 N chain pull, 1.5 N·m on every hex socket.</div><div>→ Print the cranks at 100 % and limit motor current. Hammer: PA 12T sprocket + spares. Motor face plates are 5 mm. Driver ≥ 3 A per motor; check the stall current on the 170 rpm listing and set a current limit so a stall never lasts more than ~1 s.</div></div><div class='iss'><div><span class='sev s-high'>HIGH</span> <span class='st'>✔ fixed in model</span></div><b>How the coupler sets the spacing</b><div class=why>Sleeve 11 mm + hex 7 mm. The GA25 shaft is 11.5 mm from the face (incl. the 2.5 mm boss), D-flat on the outer 8 mm.</div><div>→ Motor face plates are 5 mm (3 mm web on the side panels) → 6–8 mm of shaft inside the sleeve and both set screws land on the D-flat. Wheels sit 3 mm off the panels (coupler recessed in the wheel hub). Every driven part has a 12 mm hex socket and is held by an M4 screw into the coupler end.</div></div><div class='iss'><div><span class='sev s-med'>MED</span> <span class='st todo'>⚠ check when building</span></div><b>Printed parts on the hex</b><div class=why>Hex sockets in printed parts wear and crack at the corners.</div><div>→ Print 100 % infill, socket 12.1–12.2 mm across flats, test-fit first; print spares of the crank and the 12T sprocket.</div></div><div class='iss'><div><span class='sev s-med'>MED</span> <span class='st todo'>⚠ check when building</span></div><b>Band force</b><div class=why>For ≈1.5–2 J you need ≈50 N average band force. The anchor post and band pin see this all the time.</div><div>→ Start with 2 bands; add until the hammer still reaches the top. Anchor post through-bolted into the doubler.</div></div><div class='iss'><div><span class='sev s-med'>MED</span> <span class='st todo'>⚠ check when building</span></div><b>Hammer motor on the right</b><div class=why>GA25 + chain + dog clutch put the motor end ≈3.2 cm past the box side, above the rear wheel (still inside the outer tyre face, 18 mm above the tyre).</div><div>→ Add a printed cap over the motor end.</div></div><div class='iss'><div><span class='sev s-med'>MED</span> <span class='st todo'>⚠ check when building</span></div><b>Hammer at the top is ≈41 cm high</b><div class=why>Above the 30 cm start height.</div><div>→ OK only because the rules allow expanding after the start – confirm.</div></div>
   <h3>Automatic clash check</h3>
-  <p>Sweeps the crank through a full turn (every 6°), the hammer 70°→284° (every 3°), the interlock cases and the free dog-sprocket, and tests every part against every other part (points more than 0.6 mm inside count). Last run: <b class="ok">0 clashes</b>.</p>
+  <p>Sweeps the crank through a full turn (every 6°), the hammer 70°→284° (every 3°), the interlock cases, and tests every part against every other part (points more than 0.6 mm inside count). Last run: <b class="ok">0 clashes</b>.</p>
   <button id="runClash">Run clash check</button> <span style="color:var(--mut);font-size:12px">(≈10–30 s)</span>
   <div id="clashOut"></div>
 </div>
 
 <div class="pg" id="p7">
-  <h2>Shovel – parts to 3D-print</h2>
+  <h2>Parts to 3D-print</h2>
   <p><b>Click any row</b> – that part turns <span style="color:#ff8a1a;font-weight:700">orange</span> in the 3D view, everything else fades, and the camera goes to it. Click it again (or <b>Show whole robot</b>) to go back.</p>
   <p style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">My printer bed (mm):
    <input id="bedX" type="number" value="260" style="width:64px"> ×
@@ -282,7 +325,7 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
    <input id="bedZ" type="number" value="250" style="width:64px">
    <button id="clearHi">Show whole robot</button></p>
   <p><button id="dlTest">⬇ Hole test piece (STL)</button> <button id="dlAll">⬇ All STL files</button><br><span style="color:var(--mut);font-size:12px">Files are in mm, already lying in the print direction. Print the test piece first; side parts have a RIGHT and a LEFT file (mirror images) – print each once.</span></p>
-  <h3>Parts (P1 – P6)</h3>
+  <h3>Parts (P1 – P6 shovel, P7 hammer)</h3>
   <div id="printList"></div>
   <p class="pm">Stays metal: the 8 mm steel axle, its rings (collars), the bolts and the brass couplers.</p>
   <h3>Still to measure (M1 – M3)</h3>
@@ -312,22 +355,21 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
 <tr><td>M4×12 button head + washer</td><td>2</td><td>crank → coupler end thread</td></tr>
 <tr><td>Hall sensor + Ø4 magnet</td><td>1–2</td><td>crank home</td></tr>
 </table>
-<h3>Hammer</h3><table><tr><th>Item</th><th>Qty</th><th>Note</th></tr>
-<tr><td>Ø10 × 106 mm steel shaft</td><td>1</td><td>file 2 flats for the set screws</td></tr>
-<tr><td>6000-2RS bearing 10×26×8</td><td>2</td><td>pressed into the uprights + printed retainers (3 × M2.5×8 each)</td></tr>
-<tr><td>9 mm plywood</td><td>–</td><td>2 uprights, 2 arm plates</td></tr>
-<tr><td>Aluminium angle 20×20×2, 24 mm long</td><td>8</td><td>upright feet</td></tr>
-<tr><td>M4 bolts + washers + nyloc</td><td>≈16</td><td>feet through lid + doubler, arm, head</td></tr>
-<tr><td>M4 cross bolt through hub + shaft</td><td>1</td><td>drill Ø4 through the shaft</td></tr>
-<tr><td>#25 sprocket 48T (plate)</td><td>1</td><td>bore to Ø14 for a 10×14×5 bronze bush</td></tr>
-<tr><td>#25 sprocket 12T, printed PA/PETG with 12 mm hex hub</td><td>1 (+2 spare)</td><td>on the 18 mm brass hex coupler, M4 screw + washer</td></tr>
-<tr><td>18 mm brass hex coupler (your part)</td><td>1</td><td>hammer motor, M4 screw holds the sprocket</td></tr>
-<tr><td>#25 roller chain</td><td>56 links</td><td>+ 1 master link</td></tr>
-<tr><td>Drive disc Ø36 + Ø5 pin, dog pin Ø5</td><td>1 + 1</td><td>alu disc clamped with a set screw; pins pressed in</td></tr>
-<tr><td>Ø10 shaft collars</td><td>2</td><td>keep sprocket and band crank in place</td></tr>
-<tr><td>Rubber bands (thick)</td><td>2–4</td><td>tune</td></tr>
-<tr><td>Stop posts + TPU pads</td><td>2</td><td>printed, 2 × M3 through lid + doubler each</td></tr>
-<tr><td>M3×16 + washer + nut</td><td>4</td><td>hammer motor bracket through lid + doubler (slotted)</td></tr>
+<h3>Hammer (direct on motor)</h3><table><tr><th>Item</th><th>Qty</th><th>Note</th></tr>
+<tr><td>12 mm plywood</td><td>80 × 78</td><td>motor upright (Ø26 pocket 9 deep)</td></tr>
+<tr><td>Hardwood 20 × 15 mm</td><td>225 mm</td><td>hammer stick</td></tr>
+<tr><td>Hardwood block 30 × 25 × 64 mm</td><td>1</td><td>head, 20 × 15 hole for the stick</td></tr>
+<tr><td>Rubber / TPU pad 3 mm</td><td>2 (+2 for the stops)</td><td>head ends, stop tops</td></tr>
+<tr><td>Hammer hub (print)</td><td>1 + spare</td><td>12 mm hex socket on the coupler</td></tr>
+<tr><td>Stop posts</td><td>2</td><td>wood blocks or prints, 44 × 12 × 15 / 25</td></tr>
+<tr><td>Aluminium angle 20×20×2, 24 mm long</td><td>2</td><td>upright → lid</td></tr>
+<tr><td>18 mm brass hex coupler (your part)</td><td>1</td><td>hammer motor</td></tr>
+<tr><td>M3×8 countersunk</td><td>2</td><td>GA25 → upright</td></tr>
+<tr><td>M4×20 + nyloc</td><td>4</td><td>angles → upright, angles → lid + doubler</td></tr>
+<tr><td>M4×30 wood screws</td><td>2</td><td>from under the lid into the upright</td></tr>
+<tr><td>M4×16 socket + Loctite</td><td>1</td><td>hub → coupler</td></tr>
+<tr><td>M4×35 + nyloc</td><td>3</td><td>hub → stick (2), head → stick (1)</td></tr>
+<tr><td>M3×20 + nut</td><td>4</td><td>stop posts → lid</td></tr>
 <tr><td>4 mm plywood doubler</td><td>1</td><td>under the lid, ≈186 × 160 mm</td></tr>
 </table>
 <h3>Drive</h3><table><tr><th>Item</th><th>Qty</th><th>Note</th></tr>
@@ -342,10 +384,10 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
 <div class="pg" id="p5">
   <h2>30-day plan</h2>
   <table>
-   <tr><td><b>Days 1–3</b></td><td>Order: Ø8 + Ø10 rod, collars, 6000-2RS, 7 × hex couplers (+ 4→6 mm sleeves if the bore is 6 mm), 6 × 623ZZ bearings, #25 chain + sprockets, bronze bush, bolts. Measure GA25 face + shaft.</td></tr>
+   <tr><td><b>Days 1–3</b></td><td>Order: Ø8 + Ø10 rod, collars, 6000-2RS, 7 × hex couplers (+ 4→6 mm sleeves if the bore is 6 mm), 6 × 623ZZ bearings, bolts, hardwood for the hammer. Measure GA25 face + shaft.</td></tr>
    <tr><td><b>Days 4–8</b></td><td>Wall pockets, drive motors, wheels, electronics. Drive test.</td></tr>
    <tr><td><b>Days 9–15</b></td><td>Cheeks, axle, blade, brackets, cranks + rods. Flip a 3 kg dummy. <b>Shovel working = you can compete.</b></td></tr>
-   <tr><td><b>Days 16–24</b></td><td>Hammer: doubler, uprights, shaft, dog clutch, chain, bands, stops. Slow tests first (no bands). Stop at day 24 whatever state it is in.</td></tr>
+   <tr><td><b>Days 16–24</b></td><td>Hammer: doubler, motor upright, hub + stick + head, stops. Slow tests first (half power). Stop at day 24 whatever state it is in.</td></tr>
    <tr><td><b>Days 25–30</b></td><td>Weigh, interlock + current limits in code, wiring, spares (print 2 of every printed part), driving practice.</td></tr>
   </table>
 </div>
