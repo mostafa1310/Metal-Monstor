@@ -248,9 +248,9 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
    <tr><th>Part</th><th>Size / how it is attached</th><th>Material</th></tr>
    <tr><td>Pivot</td><td>The GA25 output shaft itself, 58 mm above the lid, 15 mm behind the centre. The head is near the hammer's centre of percussion, so only ≈ 15–20 % of a hit pushes back on the motor shaft.</td><td>–</td></tr>
    <tr><td>Motor upright (1)</td><td>12 mm print, 80 × 78, inner face 26.5 mm right of the centre. <b>Ø26 pocket 9 mm deep</b> for the gearbox (3 mm web), Ø8 for the nose, 2 × M3×8 countersunk into the GA25. 2 alu angles on the motor side (M4 through lid + doubler) + 2 × M4×30 screws from under the lid into Ø3.3 pilot holes.</td><td>PETG print</td></tr>
-   <tr><td>Hub (1)</td><td>30 × 30 × 55 print: <b>12 mm hex socket 7 deep</b> on the coupler + M4×16 from a Ø8 counterbore into the coupler thread. The stick goes 30 mm into a 20 × 15 slot from below, 2 × M4 through-bolts.</td><td>PETG / PA 100 %</td></tr>
-   <tr><td>Stick (1)</td><td><b>20 × 15 mm</b>, 222.5 mm long: 22 cm from the pivot to the head centre. <b>Laser cut from 15 mm</b> as a T – the stick and the middle of the head in one piece. ≈ 47 g. The 20 mm side faces the swing direction.</td><td>wood (laser)</td></tr>
-   <tr><td>Head (1)</td><td><b>30 × 25 × 64 mm</b>: the T end of the stick + 2 laser-cut side plates 64 × 25 × 7.5 glued on, 1 × M4 through-bolt. Sticks out 22 mm in front of and behind the stick. 3 mm rubber / TPU pad on both ends ⇒ 70 mm over the pads. ≈ 35 g.</td><td>wood + rubber</td></tr>
+   <tr><td>Hub (1)</td><td>30 × 30 × 55 print: <b>12 mm hex socket 7 deep</b> on the coupler + M4×16 from a Ø8 counterbore into the coupler thread. The stick goes 30 mm into a 20 × 12.3 slot from below, 2 × M4 through-bolts.</td><td>PETG / PA 100 %</td></tr>
+   <tr><td>Stick (1)</td><td><b>20 × 12 mm</b>, 222.5 mm long: 22 cm from the pivot to the head centre. <b>Laser cut from 6 mm plywood</b> as a T – the stick and the middle of the head in one piece – <b>cut twice and glued face to face</b> (12 mm). ≈ 37 g. The 20 mm side faces the swing direction.</td><td>wood (laser)</td></tr>
+   <tr><td>Head (1)</td><td><b>24 × 25 × 64 mm</b>: the T ends of the 2 stick layers + 2 laser-cut side plates 64 × 25 × 6 glued on (one each side), 1 × M4×30 through-bolt. Sticks out 22 mm in front of and behind the stick. 3 mm rubber / TPU pad on both ends ⇒ 70 mm over the pads. ≈ 30 g.</td><td>wood + rubber</td></tr>
    <tr><td>Stops</td><td>Rear 70° and front 284°: wood or printed posts with rubber / TPU pads, catching the stick ≈ 8 cm from the pivot. Without the front stop the head would touch the shovel rods at 294°.</td><td>wood / PETG + rubber</td></tr>
   </table>
   <h3>One hit, step by step</h3>
@@ -266,7 +266,7 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
   <p><b>Direct on motor</b> is the chosen design: fewest parts, and the fastest hit. Chain and gears stay here to compare. Pick one below – the <b>3D model is rebuilt with it</b> (sprocket / gear sizes, chain length, motor position, bracket) and the numbers update. <b>▶ Hit front / Hit rear</b> play the swing at the speed the motor really gives with that pair. Click any row of the compare table to try it.</p>
   <div id="hdUI"></div>
   <h3>Why a low ratio for this hammer</h3>
-  <p>The stick hammer weighs only ≈ 80 g, so the motor has torque to spare even at 1 : 1. A bigger ratio only makes it slower – the hit energy grows with speed², so <b>1 : 1 hits hardest</b> – and 1 : 1 needs no chain or gears at all: the hammer goes straight on the motor. Use 2 : 1 or more only if you make the head heavier (try the head-mass box).</p>
+  <p>The stick hammer weighs only ≈ 70 g, so the motor has torque to spare even at 1 : 1. A bigger ratio only makes it slower – the hit energy grows with speed², so <b>1 : 1 hits hardest</b> – and 1 : 1 needs no chain or gears at all: the hammer goes straight on the motor. Use 2 : 1 or more only if you make the head heavier (try the head-mass box).</p>
   <h3>How to check what you have</h3>
   <ul>
    <li><b>Chain pitch</b> = pin to pin: 6.35 mm = #25 / 04C · 8 mm = 05B · 9.525 mm = #35 / 06B · 12.7 mm = #40 / 08B / bicycle. Measure 10 pitches and divide by 10.</li>
@@ -324,7 +324,7 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
    <input id="bedY" type="number" value="260" style="width:64px"> ×
    <input id="bedZ" type="number" value="250" style="width:64px">
    <button id="clearHi">Show whole robot</button></p>
-  <p><button id="dlTest">⬇ Hole test piece (STL)</button> <button id="dlAll">⬇ All STL files</button><br><span style="color:var(--mut);font-size:12px">Files are in mm, already lying in the print direction. Print the test piece first; side parts have a RIGHT and a LEFT file (mirror images) – print each once.</span></p>
+  <p><button id="dlTest">⬇ Hole test piece (STL)</button> <button id="dlAll">⬇ All STL files</button> <button id="dlRobotGLB">⬇ Whole robot 3D (GLB, colours)</button> <button id="dlRobotSTL">⬇ Whole robot 3D (STL)</button><br><span style="color:var(--mut);font-size:12px">Files are in mm, already lying in the print direction. Print the test piece first; side parts have a RIGHT and a LEFT file (mirror images) – print each once. The whole-robot files are the full assembly in the pose shown now (GLB: metres, with colours, one object per part – Blender, Windows 3D Viewer; STL: mm, z up – Fusion, SolidWorks, slicers). Also saved in the model/ folder.</span></p>
   <h3>Parts (P1 – P6 shovel, P7 hammer)</h3>
   <div id="printList"></div>
   <p class="pm">Stays metal: the 8 mm steel axle, its rings (collars), the bolts and the brass couplers.</p>
@@ -357,8 +357,8 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
 </table>
 <h3>Hammer (direct on motor)</h3><table><tr><th>Item</th><th>Qty</th><th>Note</th></tr>
 <tr><td>Motor upright (print, P8)</td><td>1</td><td>80 × 78 × 12, Ø26 pocket 9 deep</td></tr>
-<tr><td>Stick T, laser cut 15 mm</td><td>1</td><td>stick + middle of the head (woodwork/laser)</td></tr>
-<tr><td>Head side plate, laser cut 7.5 mm</td><td>2</td><td>64 × 25 (woodwork/laser)</td></tr>
+<tr><td>Stick T layer, laser cut 6 mm plywood</td><td>2</td><td>glued face to face = 12 mm stick + middle of the head (woodwork/laser)</td></tr>
+<tr><td>Head side plate, laser cut 6 mm plywood</td><td>2</td><td>64 × 25, one each side of the head (woodwork/laser)</td></tr>
 <tr><td>Rubber / TPU pad 3 mm</td><td>2 (+2 for the stops)</td><td>head ends, stop tops</td></tr>
 <tr><td>Hammer hub (print)</td><td>1 + spare</td><td>12 mm hex socket on the coupler</td></tr>
 <tr><td>Stop posts (print, P9 / P10)</td><td>2</td><td>44 × 12 × 15 / 25</td></tr>
@@ -368,7 +368,8 @@ details{border:1px solid var(--line);border-radius:8px;padding:6px 10px;margin:8
 <tr><td>M4×20 + nyloc</td><td>4</td><td>angles → upright, angles → lid + doubler</td></tr>
 <tr><td>M4×30 screws</td><td>2</td><td>from under the lid into the upright (Ø3.3 pilot holes)</td></tr>
 <tr><td>M4×16 socket + Loctite</td><td>1</td><td>hub → coupler</td></tr>
-<tr><td>M4×35 + nyloc</td><td>3</td><td>hub → stick (2), head → stick (1)</td></tr>
+<tr><td>M4×35 + nyloc</td><td>2</td><td>hub → stick</td></tr>
+<tr><td>M4×30 + nyloc</td><td>1</td><td>head → stick (through the 24 mm head)</td></tr>
 <tr><td>M3×20 + nut</td><td>4</td><td>stop posts → lid</td></tr>
 <tr><td>4 mm plywood doubler</td><td>1</td><td>under the lid, ≈186 × 160 mm</td></tr>
 </table>

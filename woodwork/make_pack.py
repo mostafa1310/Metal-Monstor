@@ -1,6 +1,7 @@
-# Builds the laser-cut pack for the wooden hammer parts (stick + head):
-#   laser/Hammer_stick_T_15mm.svg/.dxf           stick T, cut from 15 mm, 1 piece
-#   laser/Hammer_head_side_plate_7.5mm.svg/.dxf  head side plate, cut from 7.5 mm, 2 pieces
+# Builds the laser-cut pack for the wooden hammer parts (stick + head), all from 6 mm plywood:
+#   laser/Hammer_T_layer_6mm.svg/.dxf            stick T layer, 2 pieces (glued face to face -> 12 mm stick)
+#   laser/Hammer_head_side_plate_6mm.svg/.dxf    head side plate, 2 pieces (one each side -> head 24 mm)
+#   laser/Hammer_all_parts_6mm.svg/.dxf          all 4 pieces on one sheet (send this one if the shop wants one file)
 #   Hammer_wood_parts.html            build guide (print it to PDF with Chrome)
 # The motor upright, hub and stop posts are 3D printed (stl/P7–P10). Sizes = lib/robot.js.
 # usage: python make_pack.py
@@ -29,9 +30,10 @@ def DV(y1,y2,x,xr,t=None):
     return L(xr+s*1,y1,x+s*1.5,y1,'ex')+L(xr+s*1,y2,x+s*1.5,y2,'ex')+f'<line class="dm" x1="{x:.2f}" y1="{y1:.2f}" x2="{x:.2f}" y2="{y2:.2f}" marker-start="#AR#" marker-end="#AR#"/>'+T(x-1.2,(y1+y2)/2,t,c='dt',rot=-90)
 
 # ---------------------------------------------------------------- geometry (mm) – keep in step with lib/robot.js
-# 2 flat outlines; the manufacturer sets the thickness on the machine:
-#   stick T  – 15 mm, 1 piece  (the stick + the middle of the head in one piece)
-#   side plate – 7.5 mm, 2 pieces (glued on each side of the T end -> head 64 × 25 × 30)
+# 2 flat outlines, everything from 6 mm plywood (the shop's maximum):
+#   stick T    – 2 pieces, glued face to face -> 12 mm (the stick + the middle of the head in one piece)
+#   side plate – 2 pieces, one glued on each side of the T end -> head 64 × 25 × 24
+TH=6                       # sheet thickness
 LEN=222.5                  # stick: 10 mm below the motor axis down to the bottom of the head
 SW=20                      # stick width (swing direction)
 HL,HW=25,64                # head: height along the stick, length in the swing direction
@@ -64,8 +66,12 @@ def write_cut(name,parts,W,H,note):
 def cut_files():
     os.makedirs(os.path.join(HERE,'laser'),exist_ok=True)
     G=5
-    write_cut('Hammer_stick_T_15mm',[t_shape(G,G+HW/2)],LEN+2*G,HW+2*G,'stick T, cut from 15 mm, 1 piece')
-    write_cut('Hammer_head_side_plate_7.5mm',[side_plate(G,G),side_plate(2*G+HW,G)],3*G+2*HW,HL+2*G,'head side plate, cut from 7.5 mm, 2 pieces')
+    write_cut('Hammer_T_layer_6mm',[t_shape(G,G+HW/2),t_shape(G,2*G+HW+HW/2)],LEN+2*G,2*HW+3*G,'stick T layer, 6 mm plywood, 2 pieces (glue face to face)')
+    write_cut('Hammer_head_side_plate_6mm',[side_plate(G,G),side_plate(2*G+HW,G)],3*G+2*HW,HL+2*G,'head side plate, 6 mm plywood, 2 pieces')
+    # one sheet: the 2 Ts above each other, the 2 plates below them
+    y3=3*G+2*HW
+    write_cut('Hammer_all_parts_6mm',[t_shape(G,G+HW/2),t_shape(G,2*G+HW+HW/2),side_plate(G,y3),side_plate(2*G+HW,y3)],LEN+2*G,y3+HL+G,
+              'all hammer parts, 6 mm plywood: 2 stick T layers + 2 head side plates')
 
 # ---------------------------------------------------------------- drawings for the guide (full size)
 def t_drawing():
@@ -73,21 +79,21 @@ def t_drawing():
     b=P(pts)+''.join(C(x,y,HOLE/2) for x,y in holes)+R(ox,oy-SW/2,30,SW,'hid')
     b+=DH(ox,ox+LEN,oy+HW/2+8,oy+HW/2)+DV(oy-SW/2,oy+SW/2,ox-5,ox,'20')+DV(oy-HW/2,oy+HW/2,ox+LEN+7,ox+LEN,'64')
     b+=DH(ox,ox+12,oy-SW/2-5,oy-SW/2)+DH(ox,ox+24,oy-SW/2-12,oy-SW/2)+DH(ox+LEN-HL,ox+LEN,oy-HW/2-5,oy-HW/2,'25')+DH(ox+LEN-HL,ox+LEN-17.5,oy-HW/2-12,oy-HW/2,'7.5')
-    b+=T(ox+15,oy+SW/2+4,'goes in the hub',sz=3)+T(ox+100,oy+1.2,'STICK T – 15 mm thick, 1 piece',c='hd2')
+    b+=T(ox+15,oy+SW/2+4,'goes in the hub',sz=3)+T(ox+100,oy+1.2,'STICK T – 6 mm, 2 pieces (glued = 12)',c='hd2')
     b+=T(ox+100,oy+HW/2+18,'all holes Ø4.3 · the head hole is on the centre line',sz=3.2)
     return svg(260,108,b)
 def head_drawing():
     ox,oy=10,11;pts,holes=side_plate(ox,oy)
     b=P(pts)+''.join(C(x,y,HOLE/2) for x,y in holes)
     b+=DH(ox,ox+HW,oy+HL+7,oy+HL)+DV(oy,oy+HL,ox-5,ox,'25')+DH(ox,ox+HW/2,oy-5,oy,'32')+DV(oy,oy+7.5,ox+HW+6,ox+HW,'7.5')
-    b+=T(ox+HW/2,oy+HL+16,'SIDE PLATE – 7.5 mm thick, 2 pieces',c='hd2')
+    b+=T(ox+HW/2,oy+HL+16,'SIDE PLATE – 6 mm thick, 2 pieces',c='hd2')
     return svg(90,59,b)
-def stack_drawing():   # head seen from below: plate + T end + plate
-    ox,oy=20,10;b=R(ox,oy,HW,7.5,'pt')+R(ox,oy+7.5,HW,15,'pt2')+R(ox,oy+22.5,HW,7.5,'pt')
-    b+=R(ox-3,oy+1,3,28,'pad')+R(ox+HW,oy+1,3,28,'pad')
-    b+=DH(ox,ox+HW,oy-4,oy)+DV(oy,oy+30,ox+HW+9,ox+HW,'30')+DV(oy+7.5,oy+22.5,ox-8,ox,'15')
-    b+=T(ox+HW/2,oy+16,'T end of the stick',sz=3)+T(ox+HW/2,oy+39,'head from below: plate + stick + plate, rubber pad on each end',sz=3.2)
-    return svg(110,53,b)
+def stack_drawing():   # head seen from below: plate + 2 T ends + plate
+    ox,oy=20,10;b=R(ox,oy,HW,TH,'pt')+R(ox,oy+TH,HW,TH,'pt2')+R(ox,oy+2*TH,HW,TH,'pt2')+R(ox,oy+3*TH,HW,TH,'pt')
+    b+=R(ox-3,oy+1,3,4*TH-2,'pad')+R(ox+HW,oy+1,3,4*TH-2,'pad')
+    b+=DH(ox,ox+HW,oy-4,oy)+DV(oy,oy+4*TH,ox+HW+9,ox+HW,'24')+DV(oy+TH,oy+3*TH,ox-8,ox,'12')
+    b+=T(ox+HW/2,oy+4*TH+9,'head from below: plate + 2 stick layers + plate',sz=3.2)
+    return svg(110,47,b)
 
 css='''
 @page{size:A4 landscape;margin:10mm}
@@ -122,38 +128,41 @@ def page(body,n,title):
 def build():
     cut_files()
     p1=f'''<h1>Hammer stick + head – laser cut</h1>
-<p>Only the stick and the head are wood. They are <b>2 flat shapes</b>: send the files below and tell the laser shop the thickness of each.
-The outside sizes are the same as before: stick 20 × 15, head 64 × 25 × 30. The motor upright, the hub and the stop posts are <b>3D printed</b> (stl/P7 hub, P8 upright, P9 / P10 stop posts).</p>
+<p>Only the stick and the head are wood. They are <b>2 flat shapes, both cut from 6 mm plywood</b> (the laser's maximum):
+<b>2 × the stick T</b>, glued face to face → a <b>12 mm</b> stick, and <b>2 side plates</b>, one glued on each side of the head → a <b>24 mm</b> head.
+Finished sizes: stick 20 × 12, head 64 × 25 × 24. The motor upright, the hub and the stop posts are <b>3D printed</b> (stl/P7 hub with a 12.3 mm slot, P8 upright, P9 / P10 stop posts).</p>
 <div class="two"><div>
 <h3>Send to the laser shop</h3>
 <table><tr><th>File (SVG or DXF)</th><th>Thickness</th><th>How many</th></tr>
-<tr><td>laser/Hammer_stick_T_15mm</td><td><b>15 mm</b></td><td><b>1</b></td></tr>
-<tr><td>laser/Hammer_head_side_plate_7.5mm</td><td><b>7.5 mm</b></td><td><b>2</b> (both are in the file)</td></tr></table>
+<tr><td>laser/Hammer_all_parts_6mm<br><span style="font-size:9.5pt">(all 4 pieces on one sheet, 233 × 173 mm)</span></td><td><b>6 mm</b></td><td><b>1 sheet</b> = 2 T + 2 plates</td></tr>
+<tr><td colspan="3" style="font-size:9.5pt">or the same pieces split: laser/Hammer_T_layer_6mm (2 T) + laser/Hammer_head_side_plate_6mm (2 plates)</td></tr></table>
 <table style="margin-top:2mm">
-<tr><td style="width:40mm"><b>Material</b></td><td>plywood or hardwood – all pieces the same</td></tr>
+<tr><td style="width:40mm"><b>Material</b></td><td><b>birch plywood 6 mm</b> (not MDF – it splits at the bolt holes)</td></tr>
 <tr><td><b>Scale</b></td><td>1:1, units mm – import <b>without scaling</b></td></tr>
 <tr><td><b>Lines</b></td><td>all lines are cut-through lines (layer CUT in the DXF, red in the SVG)</td></tr>
 <tr><td><b>Check</b></td><td>the stick T must measure <b>222.5 mm</b> long and <b>20 mm</b> wide</td></tr>
 </table>
-<p style="font-size:10pt">If 7.5 mm is not available: 8 mm works too (the head becomes 31 wide).</p>
+<p style="font-size:10pt">"6 mm" plywood is often 5.5–5.8 mm. Measure the glued stick: if it is under 11.5 mm, tell me before printing the hub – the slot (12.3) can follow it.</p>
 </div><div>
 <h3>Also needed</h3>
 <table>
 <tr><td>Wood glue (or epoxy)</td><td>–</td></tr>
-<tr><td>M4×35 + nyloc</td><td>3 – hub → stick (2), through the head (1)</td></tr>
-<tr><td>Rubber / TPU pad 28 × 23 × 3</td><td>2 – one on each end of the head</td></tr>
+<tr><td>M4×35 + nyloc</td><td>2 – hub → stick</td></tr>
+<tr><td>M4×30 + nyloc</td><td>1 – through the head</td></tr>
+<tr><td>Rubber / TPU pad 22 × 23 × 3</td><td>2 – one on each end of the head</td></tr>
 </table>
 {stack_drawing()}
+<h3>Checks</h3><ul class="chk" style="padding-left:0"><li>Glued stick measures 11.5–12.2 mm thick.</li><li>Stick slides into the hub slot without forcing.</li><li>The side plate holes line up with the head hole of the stick.</li></ul>
 </div></div>'''
-    p2=f'''<h2>The 2 shapes (real size at 100 %) and gluing</h2>
+    p2=f'''<h2>The 2 shapes (real size at 100 %) – cut each twice – and gluing</h2>
 {t_drawing()}
 <div class="two"><div style="flex:0 0 92mm">{head_drawing()}</div><div>
 <ol class="steps">
-<li>Glue the 2 <b>side plates</b> on both sides of the wide end of the stick T. Push an M4 bolt through the 3 holes to line them up, clamp, let dry. The head is now <b>64 × 25 × 30</b>.</li>
-<li>When dry: <b>M4×35 + nyloc</b> through the head. Sand the edges.</li>
-<li>Glue a rubber pad on each 25 × 30 end of the head.</li>
-<li>Top 30 mm of the stick into the printed hub slot (15 × 20) with epoxy, <b>2 × M4×35</b> through hub + stick.</li></ol>
-<ul class="chk"><li>Stick slides into the hub slot without forcing.</li><li>The side plate holes line up with the head hole of the stick.</li></ul>
+<li>Glue the 2 <b>stick Ts</b> face to face (thin even layer of wood glue). Push M4 bolts through the 3 holes to line them up, clamp along the whole length, let dry → <b>12 mm</b> stick.</li>
+<li>Glue the 2 <b>side plates</b> on both sides of the wide end, M4 bolt through the head hole to line them up, clamp, let dry. The head is now <b>64 × 25 × 24</b>.</li>
+<li>When dry: <b>M4×30 + nyloc</b> through the head. Sand the edges.</li>
+<li>Glue a rubber pad on each 25 × 24 end of the head.</li>
+<li>Top 30 mm of the stick into the printed hub slot (12.3 × 20) with epoxy, <b>2 × M4×35</b> through hub + stick.</li></ol>
 </div></div>'''
     html='<!doctype html><html><head><meta charset="utf-8"><title>Hammer stick and head</title><style>'+css+'</style></head><body>'+''.join(
         page(b,i+1,t) for i,(b,t) in enumerate([(p1,'overview'),(p2,'shapes and gluing')]))+'</body></html>'
